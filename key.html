@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET KEY TEELEZ - ĐẸP ZAI KHOAI TO</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00f2ff; /* Màu xanh neon Cyber */
+            --secondary-color: #7000ff; /* Màu tím huyền ảo */
+            --bg-dark: #050505;
+            --card-bg: rgba(20, 20, 25, 0.95);
+            --text-color: #ffffff;
+            --success-color: #39ff14; /* Xanh lá neon */
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(112, 0, 255, 0.05) 0%, transparent 40%);
+            color: var(--text-color);
+            font-family: 'Orbitron', sans-serif; /* Font chữ phong cách game */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2), inset 0 0 10px rgba(112, 0, 255, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 420px;
+            border: 2px solid rgba(0, 242, 255, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        /* Hiệu ứng viền chạy xung quanh card */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+            z-index: -1;
+            border-radius: 27px;
+            background-size: 400%;
+            animation: glowing 20s linear infinite;
+            opacity: 0.5;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        h2 {
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 900;
+            font-size: 26px;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #00f2ff, #7000ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+        }
+
+        .sub-title {
+            color: #00f2ff;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            margin-bottom: 25px;
+            display: block;
+        }
+
+        p {
+            font-size: 14px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .key-box {
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: inset 0 0 15px rgba(0, 242, 255, 0.1);
+        }
+
+        .key-text {
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--success-color);
+            text-shadow: 0 0 10px rgba(57, 255, 20, 0.5);
+            word-break: break-all;
+            display: block;
+            margin-bottom: 8px;
+            font-family: 'Consolas', monospace;
+        }
+
+        .status {
+            font-size: 11px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button {
+            background: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+            padding: 16px 25px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            transition: 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            background: var(--primary-color);
+            color: #000;
+            box-shadow: 0 0 25px rgba(0, 242, 255, 0.6);
+        }
+
+        .footer {
+            margin-top: 25px;
+            font-size: 11px;
+            color: #444;
+            letter-spacing: 1px;
+        }
+
+        /* Toast thông báo */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background: var(--primary-color);
+            color: #000;
+            text-align: center;
+            border-radius: 8px;
+            padding: 15px;
+            position: fixed;
+            z-index: 10;
+            bottom: 30px;
+            font-weight: bold;
+            box-shadow: 0 0 20px rgba(0, 242, 255, 0.5);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: slidein 0.5s, slideout 0.5s 2.5s;
+        }
+
+        @keyframes slidein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes slideout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>TEELEZ ĐẸP ZAI KHOAI TO</h2>
+        <span class="sub-title">VERIFICATION SYSTEM</span>
+        
+        <p><i class="fa-solid fa-shield-halved" style="color:var(--primary-color)"></i> Hệ thống đã xác thực an toàn!</p>
+        
+        <div class="key-box">
+            <span class="key-text" id="key-display">VUI LÒNG CHỜ...</span>
+            <span class="status" id="status-text">Đang trích xuất dữ liệu</span>
+        </div>
+        
+        <button onclick="copyKey()">
+            <i class="fa-solid fa-bolt"></i> SAO CHÉP MÃ TRUY CẬP
+        </button>
+
+        <div class="footer">
+            DESIGNED BY TEELEZ &copy; 2024
+        </div>
+    </div>
+
+    <div id="toast">HỆ THỐNG: ĐÃ SAO CHÉP KEY THÀNH CÔNG!</div>
+
+    <script>
+        function getUrlParam(name) {
+            const results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+            return results ? results[1] : null;
+        }
+
+        const keyDisplay = document.getElementById("key-display");
+        const statusText = document.getElementById("status-text");
+        const keyFromUrl = getUrlParam('key');
+
+        if (keyFromUrl) {
+            keyDisplay.innerText = decodeURIComponent(keyFromUrl);
+            statusText.innerText = "KEY CÓ HIỆU LỰC TRONG 24 GIỜ";
+            sessionStorage.setItem('teelez_key', keyFromUrl);
+            
+            // Dọn dẹp URL cho đẹp
+            window.history.replaceState({}, document.title, window.location.pathname);
+        } else {
+            const savedKey = sessionStorage.getItem('teelez_key');
+            if (savedKey) {
+                keyDisplay.innerText = decodeURIComponent(savedKey);
+                statusText.innerText = "KEY ĐÃ LƯU TRONG PHIÊN NÀY";
+            } else {
+                keyDisplay.innerText = "ACCESS DENIED";
+                keyDisplay.style.color = "#ff0055";
+                statusText.innerText = "VUI LÒNG LẤY LINK TỪ BOT";
+            }
+        }
+
+        function copyKey() {
+            const text = keyDisplay.innerText;
+            if (text.includes("VUI LÒNG") || text.includes("DENIED")) return;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const x = document.getElementById("toast");
+                x.className = "show";
+                setTimeout(() => { x.className = x.className.replace("show", ""); }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
